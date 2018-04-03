@@ -1,0 +1,6 @@
+C:\Users\Kevin\Desktop\Algorithms\shunting_yard_algorithm\Shunting_Yard_Algorithm\Shunting_Yard_Algorithm\bin\Debug\Shunting_Yard_Algorithm.exe.config
+C:\Users\Kevin\Desktop\Algorithms\shunting_yard_algorithm\Shunting_Yard_Algorithm\Shunting_Yard_Algorithm\bin\Debug\Shunting_Yard_Algorithm.exe
+C:\Users\Kevin\Desktop\Algorithms\shunting_yard_algorithm\Shunting_Yard_Algorithm\Shunting_Yard_Algorithm\bin\Debug\Shunting_Yard_Algorithm.pdb
+C:\Users\Kevin\Desktop\Algorithms\shunting_yard_algorithm\Shunting_Yard_Algorithm\Shunting_Yard_Algorithm\obj\Debug\Shunting_Yard_Algorithm.csproj.CoreCompileInputs.cache
+C:\Users\Kevin\Desktop\Algorithms\shunting_yard_algorithm\Shunting_Yard_Algorithm\Shunting_Yard_Algorithm\obj\Debug\Shunting_Yard_Algorithm.exe
+C:\Users\Kevin\Desktop\Algorithms\shunting_yard_algorithm\Shunting_Yard_Algorithm\Shunting_Yard_Algorithm\obj\Debug\Shunting_Yard_Algorithm.pdb
