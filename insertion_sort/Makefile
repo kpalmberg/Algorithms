@@ -1,0 +1,1 @@
+gcc -g main.c insertion_sort.c insertion_sort.h
