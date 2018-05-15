@@ -1,8 +1,6 @@
-#Strassen's Algorithm, an algorithm for matrix multiplication.
-#Reduces the number of times we have to recursively multiply
-#compared to a traditional matrix multiplication method.
 
-#Calculates addition between two matrices
+
+
 def matrixAddition(A, B):
     n = len(A)
     C = [[0 for j in range(0, n)] for i in range(0, n)]
@@ -11,18 +9,11 @@ def matrixAddition(A, B):
             C[i][j] = A[i][j] + B[i][j]
     return C
 
-#Calculates subtraction between two matrices
-def matrixSubtraction(A, B):
+def squareMatrixMultiplyRecursive(A, B):
     n = len(A)
-    C = [[0 for j in range(0, n)] for i in range(0, n)]
-    for i in range(0, n):
-        for j in range(0, n):
-            C[i][j] = A[i][j] - B[i][j]
-    return C
 
-#Strassen's algorithm
-def strassenAlgorithm(A, B):
-    n = len(A) #Number of rows
+    #Initialize new n x n matrix 
+    C = [[0 for j in range(0, n)] for i in range(0, n)] 
 
     #Base case, returns single 1x1 matrix with product of two 1x1 matrices from A,B when n == 1
     if(n == 1):
@@ -32,9 +23,9 @@ def strassenAlgorithm(A, B):
 
     #Get half the size of n, the size of our quandrants
     newSize = len(A) / 2
-    newSize = int(newSize) 
+    newSize = int(newSize)
 
-    #Initialize a sub matrices
+     #Initialize a sub matrices
     a11 = [[0 for j in range(0, newSize)] for i in range(0, newSize)]
     a12 = [[0 for j in range(0, newSize)] for i in range(0, newSize)]
     a21 = [[0 for j in range(0, newSize)] for i in range(0, newSize)]
@@ -44,10 +35,7 @@ def strassenAlgorithm(A, B):
     b11 = [[0 for j in range(0, newSize)] for i in range(0, newSize)]
     b12 = [[0 for j in range(0, newSize)] for i in range(0, newSize)]
     b21 = [[0 for j in range(0, newSize)] for i in range(0, newSize)]
-    b22 = [[0 for j in range(0, newSize)] for i in range(0, newSize)]
-
-    #Initialize new array 
-    C = [[0 for j in range(0, n)] for i in range(0, n)] 
+    b22 = [[0 for j in range(0, newSize)] for i in range(0, newSize)]   
 
     for i in range(0, newSize):
         for j in range(0, newSize):
@@ -61,32 +49,10 @@ def strassenAlgorithm(A, B):
             b21[i][j] = B[i + newSize][j] #Bottom left quadrant
             b22[i][j] = B[i + newSize][j + newSize] #Bottom right quadrant
 
-    #Compute 10 different matrices
-    S1 = matrixSubtraction(b12, b22)
-    S2 = matrixAddition(a11, a12)
-    S3 = matrixAddition(a21, a22)
-    S4 = matrixSubtraction(b21, b11)
-    S5 = matrixAddition(a11, a22)
-    S6 = matrixAddition(b11, b22)
-    S7 = matrixSubtraction(a12, a22)
-    S8 = matrixAddition(b21, b22)
-    S9 = matrixSubtraction(a11, a21)
-    S10 = matrixAddition(b11, b12)
-
-    #Recursively multiply
-    P1 = strassenAlgorithm(a11, S1)
-    P2 = strassenAlgorithm(S2, b22)
-    P3 = strassenAlgorithm(S3, b11)
-    P4 = strassenAlgorithm(a22, S4)
-    P5 = strassenAlgorithm(S5, S6)
-    P6 = strassenAlgorithm(S7, S8)
-    P7 = strassenAlgorithm(S9, S10)
-
-    #Compute the quadrants for the new matrix
-    c11 = matrixAddition(matrixSubtraction(matrixAddition(P5, P4), P2), P6)
-    c12 = matrixAddition(P1, P2)
-    c21 = matrixAddition(P3, P4)
-    c22 = matrixSubtraction(matrixSubtraction(matrixAddition(P5, P1), P3), P7)
+    c11 = matrixAddition(squareMatrixMultiplyRecursive(a11, b11), squareMatrixMultiplyRecursive(a12, b21))
+    c12 = matrixAddition(squareMatrixMultiplyRecursive(a11, b12), squareMatrixMultiplyRecursive(a12, b22))
+    c21 = matrixAddition(squareMatrixMultiplyRecursive(a21, b11), squareMatrixMultiplyRecursive(a22, b21))
+    c22 = matrixAddition(squareMatrixMultiplyRecursive(a21, b12), squareMatrixMultiplyRecursive(a22, b22))
 
     #Construct the new matrix
     for i in range(0, newSize):
@@ -99,7 +65,6 @@ def strassenAlgorithm(A, B):
     #Return the new matrix
     return C
 
-
 if __name__ == "__main__":
     A = [[13, 23, 3,33],
          [11, 6, 17,40],
@@ -111,10 +76,10 @@ if __name__ == "__main__":
         [9, 10, 19, 11],
         [31, 45, 55, 17]]
 
-    #Strassen function call
-    C = strassenAlgorithm(A, B) 
+    #Square matrix multiply recursive call
+    C = squareMatrixMultiplyRecursive(A, B)
 
-    print("STRASSEN'S MULTIPLICATION:\n")
+    print("SQUARE MATRIX RECURSIVE MULTIPLICATION:\n")
 
     print("MATRIX A IS:")
     for entry in A:
@@ -128,7 +93,7 @@ if __name__ == "__main__":
             print(str(subEntry) + " ", end= " "),
         print("\n")
 
-    print("STRASSEN MATRIX MULTIPLICATION RESULT:")
+    print("SQUARE MATRIX MULTIPLICATION RECURSIVE RESULT:")
 
     for entry in C:
         for subEntry in entry:
