@@ -1,4 +1,4 @@
-# Algorithm for square matrix multiply recursive
+# Algorithm for square matrix multiplication (Recursive)
 This is one of the intuitive approaches to matrix multiplication using recursion. This is a divide-and-conquer algorithm which 
 partitions the given matrix into 4 quadrants of size n/2 where n is the number of rows in the original given matrix. For each 
 of the multiplication steps we will use recursion until the size of the matrices being halfed reaches 1. Then it will return the
