@@ -13,7 +13,6 @@ class TestGCDFunctions(unittest.TestCase):
         self.assertEqual(GCD_Method1(24, 36), 12)
 
     def test_GCD_Method2(self):
-        pass
         self.assertEqual(GCD_Method2(10, 15), 5)
         self.assertEqual(GCD_Method2(50, 15), 5)
         self.assertEqual(GCD_Method2(100, 15), 5)
